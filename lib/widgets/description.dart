@@ -10,7 +10,7 @@ class Description extends StatelessWidget {
     final secondaryTextStyle =
         TextStyle(color: Theme.of(context).colorScheme.primary);
     return Padding(
-      padding: const EdgeInsets.all(25.0),
+      padding: const EdgeInsets.only(left: 25.0, right: 25, bottom: 50),
       child: Container(
         decoration: BoxDecoration(
           border: Border.all(
