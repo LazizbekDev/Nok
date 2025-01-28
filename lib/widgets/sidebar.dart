@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:nok/routes/route_names.dart';
 import 'package:nok/widgets/tile.dart';
 
 class Sidebar extends StatelessWidget {
@@ -27,12 +28,12 @@ class Sidebar extends StatelessWidget {
           Tile(
             text: "H O M E",
             icon: Icons.home,
-            onTap: () {},
+            onTap: () => Navigator.of(context).pop(),
           ),
           Tile(
             text: "S E T T I N G S",
             icon: Icons.settings,
-            onTap: () {},
+            onTap: () => Navigator.of(context).pushNamed(RouteNames.settings),
           ),
           const Spacer(),
           Tile(
