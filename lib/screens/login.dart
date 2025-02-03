@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:nok/routes/route_names.dart';
-import 'package:nok/widgets/Input.dart';
 import 'package:nok/widgets/button.dart';
+import 'package:nok/widgets/input_field.dart';
 
 class Login extends StatelessWidget {
+  Login({super.key});
   final TextEditingController emailController = TextEditingController();
   final TextEditingController passwordController = TextEditingController();
-  Login({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -24,27 +24,27 @@ class Login extends StatelessWidget {
             Padding(
               padding: const EdgeInsets.symmetric(vertical: 25.0),
               child: Text(
-                "Food Delivery App",
+                'Food Delivery App',
                 style: TextStyle(
                   fontSize: 16,
                   color: Theme.of(context).colorScheme.inversePrimary,
                 ),
               ),
             ),
-            Input(
+            InputField(
               controller: emailController,
-              hintText: "Email",
+              hintText: 'Email',
               obscureText: false,
             ),
             Padding(
               padding: const EdgeInsets.symmetric(vertical: 10.0),
-              child: Input(
+              child: InputField(
                 controller: passwordController,
-                hintText: "Password",
+                hintText: 'Password',
                 obscureText: true,
               ),
             ),
-            Button(onTap: () {}, text: "Sing In"),
+            Button(onTap: () {}, text: 'Sing In'),
             const SizedBox(
               height: 25,
             ),
@@ -52,7 +52,7 @@ class Login extends StatelessWidget {
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 Text(
-                  "Not a member?",
+                  'Not a member?',
                   style: TextStyle(
                       color: Theme.of(context).colorScheme.inversePrimary),
                 ),
@@ -62,7 +62,7 @@ class Login extends StatelessWidget {
                     Navigator.pushNamed(context, RouteNames.signUp);
                   },
                   child: Text(
-                    "Register now",
+                    'Register now',
                     style: TextStyle(
                       color: Theme.of(context).colorScheme.inversePrimary,
                       fontWeight: FontWeight.bold,

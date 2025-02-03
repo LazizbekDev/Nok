@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:nok/routes/route_names.dart';
-import 'package:nok/widgets/Input.dart';
 import 'package:nok/widgets/button.dart';
+import 'package:nok/widgets/input_field.dart';
 
 class Register extends StatefulWidget {
   const Register({super.key});
@@ -46,30 +46,30 @@ class _RegisterState extends State<Register> {
             Padding(
               padding: const EdgeInsets.symmetric(vertical: 25.0),
               child: Text(
-                "Food Delivery App",
+                'Food Delivery App',
                 style: TextStyle(
                   fontSize: 16,
                   color: Theme.of(context).colorScheme.inversePrimary,
                 ),
               ),
             ),
-            Input(
+            InputField(
               controller: emailController,
-              hintText: "Email",
+              hintText: 'Email',
               obscureText: false,
             ),
             Padding(
               padding: const EdgeInsets.symmetric(vertical: 10.0),
-              child: Input(
+              child: InputField(
                 controller: passwordController,
-                hintText: "Password",
+                hintText: 'Password',
                 obscureText: true,
                 borderColor: Theme.of(context).colorScheme.tertiary, // Default color for password
               ),
             ),
-            Input(
+            InputField(
               controller: confirmPasswordController,
-              hintText: "Confirm Password",
+              hintText: 'Confirm Password',
               obscureText: true,
               borderColor: confirmPasswordBorderColor, // Use dynamic border color
               onChanged: (_) => validateConfirmPassword(),
@@ -83,12 +83,12 @@ class _RegisterState extends State<Register> {
                 if (confirmPasswordBorderColor ==
                     Theme.of(context).colorScheme.tertiary) {
                   // Proceed with registration logic
-                  print("Passwords match. Proceeding...");
+                  debugPrint('Passwords match. Proceeding...');
                 } else {
-                  print("Passwords do not match.");
+                  debugPrint('Passwords do not match.');
                 }
               },
-              text: "Sign Up",
+              text: 'Sign Up',
             ),
             const SizedBox(
               height: 25,
@@ -97,7 +97,7 @@ class _RegisterState extends State<Register> {
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 Text(
-                  "Already have an account?",
+                  'Already have an account?',
                   style: TextStyle(
                       color: Theme.of(context).colorScheme.inversePrimary),
                 ),
@@ -107,7 +107,7 @@ class _RegisterState extends State<Register> {
                     Navigator.pushNamed(context, RouteNames.signIn);
                   },
                   child: Text(
-                    "Sign in here",
+                    'Sign in here',
                     style: TextStyle(
                       color: Theme.of(context).colorScheme.inversePrimary,
                       fontWeight: FontWeight.bold,

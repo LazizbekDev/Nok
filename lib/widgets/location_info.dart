@@ -7,9 +7,9 @@ class LocationInfo extends StatelessWidget {
     showDialog(
       context: context,
       builder: (context) => AlertDialog(
-        title: const Text("Your location"),
+        title: const Text('Your location'),
         content: const TextField(
-          decoration: InputDecoration(hintText: "Search address.."),
+          decoration: InputDecoration(hintText: 'Search address..'),
         ),
         actions: [
           MaterialButton(
@@ -33,7 +33,7 @@ class LocationInfo extends StatelessWidget {
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           Text(
-            "Deliver now",
+            'Deliver now',
             style: TextStyle(color: Theme.of(context).colorScheme.primary),
           ),
           GestureDetector(
@@ -41,7 +41,7 @@ class LocationInfo extends StatelessWidget {
             child: Row(
               children: [
                 Text(
-                  "6901 Hollywood Blv",
+                  '6901 Hollywood Blv',
                   style: TextStyle(
                     color: Theme.of(context).colorScheme.inversePrimary,
                     fontWeight: FontWeight.bold,

@@ -1,0 +1,6 @@
+{
+    "[dart]": {
+        "editor.formatOnSave": true
+    },
+    "cSpell.words": ["cyclomatic"]
+}

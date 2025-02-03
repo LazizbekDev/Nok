@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 
 class SliverBar extends StatelessWidget {
+  const SliverBar({super.key, required this.child, required this.title});
   final Widget child;
   final Widget title;
-  const SliverBar({super.key, required this.child, required this.title});
 
   @override
   Widget build(BuildContext context) {
@@ -19,7 +19,7 @@ class SliverBar extends StatelessWidget {
         )
       ],
       backgroundColor: Theme.of(context).colorScheme.surface,
-      title: const Text("Sunset Diner"),
+      title: const Text('Sunset Diner'),
       centerTitle: true,
       flexibleSpace: FlexibleSpaceBar(
         background: child,

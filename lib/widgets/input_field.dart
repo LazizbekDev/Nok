@@ -1,13 +1,8 @@
 import 'package:flutter/material.dart';
 
-class Input extends StatelessWidget {
-  final TextEditingController controller;
-  final String hintText;
-  final bool obscureText;
-  final Color? borderColor; // Made nullable for default behavior
-  final void Function(String)? onChanged; // Optional callback for input changes
+class InputField extends StatelessWidget { // Optional callback for input changes
 
-  const Input({
+  const InputField({
     super.key,
     required this.controller,
     required this.hintText,
@@ -15,6 +10,11 @@ class Input extends StatelessWidget {
     this.borderColor, // Optional parameter for dynamic border color
     this.onChanged,
   });
+  final TextEditingController controller;
+  final String hintText;
+  final bool obscureText;
+  final Color? borderColor; // Made nullable for default behavior
+  final void Function(String)? onChanged;
 
   @override
   Widget build(BuildContext context) {

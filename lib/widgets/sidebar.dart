@@ -26,18 +26,18 @@ class Sidebar extends StatelessWidget {
             ),
           ),
           Tile(
-            text: "H O M E",
+            text: 'H O M E',
             icon: Icons.home,
             onTap: () => Navigator.of(context).pop(),
           ),
           Tile(
-            text: "S E T T I N G S",
+            text: 'S E T T I N G S',
             icon: Icons.settings,
             onTap: () => Navigator.of(context).pushNamed(RouteNames.settings),
           ),
           const Spacer(),
           Tile(
-            text: "L O G O U T",
+            text: 'L O G O U T',
             icon: Icons.logout_outlined,
             onTap: () {},
           ),

@@ -1,15 +1,15 @@
 import 'package:flutter/material.dart';
 
 class Tile extends StatelessWidget {
-  final String text;
-  final IconData? icon;
-  final void Function()? onTap;
   const Tile({
     super.key,
     required this.text,
     required this.icon,
     required this.onTap,
   });
+  final String text;
+  final IconData? icon;
+  final void Function()? onTap;
 
   @override
   Widget build(BuildContext context) {

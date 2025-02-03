@@ -12,7 +12,7 @@ class Settings extends StatelessWidget {
         Provider.of<ThemeProvider>(context, listen: false);
     return Scaffold(
       appBar: AppBar(
-        title: const Text("Settings"),
+        title: const Text('Settings'),
       ),
       body: Column(
         children: [
@@ -27,7 +27,7 @@ class Settings extends StatelessWidget {
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
                 Text(
-                  "Dark mode",
+                  'Dark mode',
                   style: TextStyle(
                     color: Theme.of(context).colorScheme.inversePrimary,
                     fontWeight: FontWeight.bold,

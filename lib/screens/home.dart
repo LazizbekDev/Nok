@@ -52,15 +52,18 @@ class _HomeState extends State<Home> with TickerProviderStateMixin {
         ],
         body: TabBarView(
           controller: _tabController,
-          children: const [
-            Center(
-              child: Text("Home")
+          children: [
+            ListView.builder(
+              itemCount: 5,
+              itemBuilder: (context, index) => Text('Home $index'),
             ),
-            Center(
-              child: Text("Settings")
+            ListView.builder(
+              itemCount: 5,
+              itemBuilder: (context, index) => Text('Settings $index'),
             ),
-            Center(
-              child: Text("Profile")
+            ListView.builder(
+              itemCount: 5,
+              itemBuilder: (context, index) => Text('Profile $index'),
             ),
           ],
         ),

@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 
 class Button extends StatelessWidget {
+  const Button({super.key, required this.onTap, required this.text});
   final Function()? onTap;
   final String text;
-  const Button({super.key, required this.onTap, required this.text});
 
   @override
   Widget build(BuildContext context) {
