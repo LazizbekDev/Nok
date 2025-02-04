@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:nok/routes/route_names.dart';
 
 class SliverBar extends StatelessWidget {
   const SliverBar({super.key, required this.child, required this.title});
@@ -14,12 +15,12 @@ class SliverBar extends StatelessWidget {
       pinned: true,
       actions: [
         IconButton(
-          onPressed: () {},
+          onPressed: () => Navigator.pushNamed(context, RouteNames.cart),
           icon: const Icon(Icons.shopping_cart),
         )
       ],
       backgroundColor: Theme.of(context).colorScheme.surface,
-      title: const Text('Sunset Diner'),
+      title: const Text('Sunset Dinner'),
       centerTitle: true,
       flexibleSpace: FlexibleSpaceBar(
         background: child,

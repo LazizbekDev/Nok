@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:nok/models/food.dart';
-import 'package:nok/models/restourant.dart';
+import 'package:nok/models/restaurant.dart';
+import 'package:nok/routes/route_names.dart';
 import 'package:nok/widgets/description.dart';
 import 'package:nok/widgets/food_list_tile.dart';
 import 'package:nok/widgets/location_info.dart';
@@ -37,7 +38,7 @@ class _HomeState extends State<Home> with TickerProviderStateMixin {
     return menu.where((food) => food.category == category).toList();
   }
 
-  List<Widget> getFoodByCategory(List<Food> menu) {
+  List<Widget> getFoodByCategory(List<Food> menu, context) {
     return FoodCategory.values.map((category) {
       List<Food> categoryMenu = _filterMenu(category, menu);
 
@@ -48,8 +49,10 @@ class _HomeState extends State<Home> with TickerProviderStateMixin {
           return FoodListTile(
             name: categoryMenu[index].name,
             description: categoryMenu[index].description,
-            imageUrl: categoryMenu[index].imagePath,
+            imagePath: categoryMenu[index].imagePath,
             price: categoryMenu[index].price,
+            onTap: () => Navigator.pushNamed(context, RouteNames.foodDetail,
+                arguments: categoryMenu[index]),
           );
         },
       );
@@ -61,29 +64,30 @@ class _HomeState extends State<Home> with TickerProviderStateMixin {
     return Scaffold(
       drawer: const Sidebar(),
       body: NestedScrollView(
-          headerSliverBuilder: (context, innerBoxIsScrolled) => [
-                SliverBar(
-                  title: TopBar(tabController: _tabController),
-                  child: Column(
-                    mainAxisAlignment: MainAxisAlignment.end,
-                    children: [
-                      Divider(
-                        indent: 25,
-                        endIndent: 25,
-                        color: Theme.of(context).colorScheme.secondary,
-                      ),
-                      const LocationInfo(),
-                      const Description(),
-                    ],
-                  ),
-                )
+        headerSliverBuilder: (context, innerBoxIsScrolled) => [
+          SliverBar(
+            title: TopBar(tabController: _tabController),
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.end,
+              children: [
+                Divider(
+                  indent: 25,
+                  endIndent: 25,
+                  color: Theme.of(context).colorScheme.secondary,
+                ),
+                const LocationInfo(),
+                const Description(),
               ],
-          body: Consumer<Restaurant>(
-            builder: (context, restaurant, child) => TabBarView(
-              controller: _tabController,
-              children: getFoodByCategory(restaurant.menu),
             ),
-          )),
+          )
+        ],
+        body: Consumer<Restaurant>(
+          builder: (context, restaurant, child) => TabBarView(
+            controller: _tabController,
+            children: getFoodByCategory(restaurant.menu, context),
+          ),
+        ),
+      ),
     );
   }
 }

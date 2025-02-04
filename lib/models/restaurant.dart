@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:nok/models/cart_item.dart';
 import 'package:nok/models/food.dart';
+import 'package:collection/collection.dart';
 
 class Restaurant extends ChangeNotifier {
   // list of food menu
@@ -196,6 +198,79 @@ class Restaurant extends ChangeNotifier {
       ],
     ),
   ];
+  final List<CartItem> _cart = [];
 
   List<Food> get menu => _menu;
+  List<CartItem> get cart => _cart;
+
+  void addToCart(Food food, List<Addon> selectedAddons) {
+    try {
+      CartItem cartItem = _cart.firstWhere(
+        (item) {
+          bool sameFood = item.food == food;
+          bool sameAddon =
+              const ListEquality().equals(item.selectedAddons, selectedAddons);
+          return sameFood && sameAddon;
+        },
+      );
+
+      cartItem.quantity++;
+    } catch (e) {
+      _cart.add(
+          CartItem(food: food, selectedAddons: selectedAddons, quantity: 1));
+    }
+    notifyListeners();
+  }
+
+  void removeFromCart(Food food, List<Addon> selectedAddons) {
+    try {
+      CartItem? cartItem = _cart.firstWhereOrNull(
+        (item) =>
+            item.food == food &&
+            const ListEquality().equals(item.selectedAddons, selectedAddons),
+      );
+
+      if (cartItem != null) {
+        if (cartItem.quantity > 1) {
+          cartItem.quantity--;
+        } else {
+          _cart.remove(cartItem);
+        }
+        notifyListeners();
+      }
+    } catch (e) {
+      debugPrint("Error: $e");
+    }
+  }
+
+  double getTotalPrice() {
+    double total = 0.0;
+
+    for (CartItem item in _cart) {
+      double itemTotal = item.food.price;
+
+      for (Addon addon in item.selectedAddons) {
+        itemTotal += addon.price;
+      }
+
+      total += itemTotal * item.quantity;
+    }
+
+    return total;
+  }
+
+  int getTotalItemCount() {
+    int totalCount = 0;
+
+    for (CartItem item in _cart) {
+      totalCount += item.quantity;
+    }
+
+    return totalCount;
+  }
+
+  void clearCart() {
+    _cart.clear();
+    notifyListeners();
+  }
 }

@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:nok/models/restourant.dart';
+import 'package:nok/models/restaurant.dart';
 import 'package:nok/routes/app_routes.dart';
 import 'package:nok/routes/route_names.dart';
 import 'package:nok/themes/theme_provider.dart';
