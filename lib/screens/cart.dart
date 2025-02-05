@@ -1,9 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:nok/models/restaurant.dart';
+import 'package:nok/routes/route_names.dart';
 import 'package:provider/provider.dart';
 import 'package:nok/widgets/button.dart';
 
 class Cart extends StatelessWidget {
+  const Cart({super.key});
+
   @override
   Widget build(BuildContext context) {
     final restaurant = Provider.of<Restaurant>(context);
@@ -50,13 +53,15 @@ class Cart extends StatelessWidget {
                               IconButton(
                                 icon: const Icon(Icons.remove_circle_outline),
                                 onPressed: () {
-                                  restaurant.removeFromCart(item.food, item.selectedAddons);
+                                  restaurant.removeFromCart(
+                                      item.food, item.selectedAddons);
                                 },
                               ),
                               IconButton(
                                 icon: const Icon(Icons.add_circle_outline),
                                 onPressed: () {
-                                  restaurant.addToCart(item.food, item.selectedAddons);
+                                  restaurant.addToCart(
+                                      item.food, item.selectedAddons);
                                 },
                               ),
                             ],
@@ -82,8 +87,11 @@ class Cart extends StatelessWidget {
                         onTap: () {
                           // Handle checkout action
                           ScaffoldMessenger.of(context).showSnackBar(
-                            const SnackBar(content: Text("Proceeding to checkout...")),
+                            const SnackBar(
+                                content: Text("Proceeding to checkout...")),
                           );
+
+                          Navigator.pushNamed(context, RouteNames.payment);
                         },
                         text: "Checkout",
                       ),

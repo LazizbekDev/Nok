@@ -2,9 +2,11 @@ import 'package:flutter/material.dart';
 import 'package:nok/models/food.dart';
 import 'package:nok/routes/route_names.dart';
 import 'package:nok/screens/cart.dart';
+import 'package:nok/screens/delivery_progress.dart';
 import 'package:nok/screens/food_detail.dart';
 import 'package:nok/screens/home.dart';
 import 'package:nok/screens/login.dart';
+import 'package:nok/screens/payment_screen.dart';
 import 'package:nok/screens/register.dart';
 import 'package:nok/screens/settings.dart';
 
@@ -29,7 +31,11 @@ Route<dynamic> generateRoute(RouteSettings settings) {
       );
 
     case RouteNames.cart:
-      return MaterialPageRoute(builder: (_) => Cart());
+      return MaterialPageRoute(builder: (_) => const Cart());
+    case RouteNames.payment:
+      return MaterialPageRoute(builder: (_) => const PaymentScreen());
+    case RouteNames.deliveryProgress:
+      return MaterialPageRoute(builder: (_) => const DeliveryProgressScreen());
     default:
       return MaterialPageRoute(builder: (_) => const Home());
   }
